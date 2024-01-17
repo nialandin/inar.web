@@ -2,13 +2,10 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class ViewAllOrdersPage {
+public class ViewAllOrdersPage extends BasePage {
 
-
-    private WebDriver driver;
-
-    public ViewAllOrdersPage(WebDriver driver) {
-        this.driver = driver;
-    }
+	public ViewAllOrdersPage(WebDriver driver) {
+		super();
+	}
 
 }
