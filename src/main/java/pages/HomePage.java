@@ -1,60 +1,71 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class HomePage {
+public class HomePage extends BasePage {
 
-    private WebDriver driver;
+	// Locators
+	@FindBy(linkText = "Weborder")
+	private WebElement webOrderLink;
 
-    //Locators
-    private By weborderLink = By.linkText("Weborder");
-    private By webAutomationLink = By.linkText("Webautomation");
-    private By targetMarketLink = By.linkText("Target Market");
-    private By bookingLink = By.linkText("Booking");
-    private By handlingCertificationLink = By.linkText("Handling Certifications");
-    private By fileUploadingLink = By.linkText("File Uploading");
+	@FindBy(linkText = "WebautomationLink")
+	private WebElement webAutomationLink;
 
-    //<h1 class="display-1  text-fifth">Explore Inar's Testing World</h1>ü
-    //css yazmak için  --> etiket.sınıf.adı
-    private By exploreInarTestingWorldTitletext = By.cssSelector("h1.display-1.text-fifth");
+	@FindBy(linkText = "targetMarketLink")
+	private WebElement targetMarketLink;
 
+	@FindBy(linkText = "bookingLink")
+	private WebElement bookingLink;
 
-    //constructor
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-    }
+	@FindBy(linkText = "handlingCertificationLink")
+	private WebElement handlingCertificationLink;
 
-    //page actions with hava methods
+	@FindBy(linkText = "fileUploadingLink")
+	private WebElement fileUploadingLink;
 
-    public WeborderLoginPage clickOnWeborderLink(){
-        driver.findElement(weborderLink).click();
-        return new WeborderLoginPage(driver);
-    }
-    public void clickWebAutomationLink(){
-        driver.findElement(webAutomationLink).click();
-    }
-    public void clickTargetMarketLink (){
-        driver.findElement(targetMarketLink).click();
-    }
-    public void clickBookingLink(){
-        driver.findElement(bookingLink).click();
-    }
-    public void clickHandlingCertificationLink(){
-        driver.findElement(handlingCertificationLink).click();
-    }
-    public void clickFileUploadingLink(){
-        driver.findElement(fileUploadingLink).click();
-    }
+	@FindBy(css = "h1.display-1.text-fifth")
+	private WebElement exploreInarTestingWorldTitletext;
 
-    public String getWelcomeText () {
-      return  driver.findElement(exploreInarTestingWorldTitletext).getText();
+	// <h1 class="display-1 text-fifth">Explore Inar's Testing World</h1>ü
+	// css yazmak için --> etiket.sınıf.adı --> h1.display-1.text-fifth
 
-    }
+	// constructor
+	public HomePage() {
+		super();
+	}
 
-    public void refreshPage (){
-        driver.navigate().refresh();
-    }
+	public void clickOnWeborderLink() {
+		webOrderLink.click();
+	}
+
+	public void clickWebAutomationLink() {
+		webAutomationLink.click();
+	}
+
+	public void clickTargetMarketLink() {
+		targetMarketLink.click();
+	}
+
+	public void clickBookingLink() {
+		bookingLink.click();
+	}
+
+	public void clickHandlingCertificationLink() {
+		handlingCertificationLink.click();
+	}
+
+	public void clickFileUploadingLink() {
+		fileUploadingLink.click();
+	}
+
+	public String getWelcomeText() {
+		return exploreInarTestingWorldTitletext.getText();
+
+	}
+
+	public void refreshPage() {
+		driver.navigate().refresh();
+	}
 
 }
-
