@@ -152,9 +152,8 @@ public class OrderPage extends BasePage {
 	}
 
 	private void clickCheckBox(WebElement checkbox) {
-		if (checkbox.isSelected()) {
-			checkbox.click();
-		}
+		// if (checkbox.isSelected()) {
+		checkbox.click();
 	}
 
 	public void enterCardNumber(String cardNumber) {

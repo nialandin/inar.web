@@ -13,11 +13,13 @@ public class Driver {
 		throw new UnsupportedOperationException("Cannot instantiate utility class");
 	}
 
-	public static WebDriver getDriver() {
+	public synchronized static WebDriver getDriver() {
+		return getDriver(System.getProperty("browser", "chrome"));
+	}
+
+	public synchronized static WebDriver getDriver(String browserType) {
 		if (DRIVER_THREAD_LOCAL.get() == null) {
 			WebDriver driver;
-			String browserType = System.getProperty("browser", "chrome");
-
 			driver = switch (browserType.toLowerCase()) {
 				case "firefox" -> new FirefoxDriver();
 				case "edge" -> new EdgeDriver();
@@ -45,6 +47,12 @@ public class Driver {
 			DRIVER_THREAD_LOCAL.set(driver);
 		}
 		return DRIVER_THREAD_LOCAL.get();
+	}
+
+	public static void closeDriver() {
+		if (Driver.getDriver() != null) {
+			Driver.getDriver().quit();
+		}
 	}
 
 }
