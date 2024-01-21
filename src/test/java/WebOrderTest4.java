@@ -6,7 +6,7 @@ import pages.WeborderLoginPage;
 import utils.BrowserUtils;
 import utils.Driver;
 
-public class WebOrderTest extends Hooks {
+public class WebOrderTest4 extends Hooks {
 
 	// @BeforeEach
 	// void setUpTestEnvironment() {
@@ -20,6 +20,20 @@ public class WebOrderTest extends Hooks {
 		Driver.getDriver().get("https://InarAcademy:Fk160621.@test.inar-academy.com");
 		HomePage homePage = new HomePage();
 		homePage.clickOnWeborderLink();
+		WeborderLoginPage weborderLoginPage = new WeborderLoginPage();
+		weborderLoginPage.login("Inar", "Academy");
+		WebOrderHomePage webOrderHomePage = new WebOrderHomePage();
+		webOrderHomePage.navigateToOrder();
+		OrderPage orderPage = new OrderPage();
+		orderPage.enterProduct("Books", "10", "10");
+
+		BrowserUtils.scrollDown();
+
+		orderPage.enterCustomerInfo("Francois", " Main", "NewYork", "Nw", "1004");
+		orderPage.enterPaymentInformation("visa", "4938281746192845", "11/32");
+		Thread.sleep(1000);
+
+		orderPage.clickOnProcessButton();
 
 	}
 
